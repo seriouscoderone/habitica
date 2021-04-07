@@ -11,7 +11,7 @@ const gemsPromo = {
 export const EVENTS = {
   spring2021: {
     start: '2021-03-18T08:00-05:00',
-    end: '2021-04-01T14:00-04:00',
+    end: '2021-04-07T15:00-04:00',
     npcImageSuffix: 'spring',
     season: 'spring',
     gear: true,
