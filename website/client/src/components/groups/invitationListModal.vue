@@ -141,7 +141,7 @@
   }
 
   .class-icon {
-    width: 80px;
+    margin-right: 1rem;
   }
 
   .usernames {
@@ -152,6 +152,7 @@
     flex: 1;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
 
   .class-icon {
@@ -257,7 +258,7 @@ export default {
       const partyMembers = this.partyMembers || [];
       return partyMembers.map(member => ({
         ...member,
-        accepted: this.group.quest.members[member._id] && false,
+        accepted: this.group.quest.members[member._id],
       }));
     },
   },
