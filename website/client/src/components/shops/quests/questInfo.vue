@@ -9,12 +9,7 @@
       >
         <dt>{{ $t('collect') + ':' }}</dt>
         <dd>
-          <div
-            v-for="(collect, key) of quest.collect"
-            :key="key"
-          >
-            <span>{{ collect.count }} {{ getCollectText(collect) }}</span>
-          </div>
+          {{ getAllCollectText() }}
         </dd>
       </div>
       <div
@@ -53,19 +48,26 @@
 
 .table-row {
   display: table-row;
-  margin-bottom: 4px;
   font-size: 14px;
   height: 1.5rem;
+
+  &:last-of-type {
+    dd {
+      padding-bottom: 0;
+    }
+  }
 }
 
 dd {
   padding-left: 1em;
   text-align: right;
+
+  padding-bottom: 0.5rem;
 }
 
 dt, dd {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top;
   height: 16px;
   max-height: 16px;
 }
@@ -184,6 +186,11 @@ export default {
         return collect.text();
       }
       return collect.text;
+    },
+    getAllCollectText () {
+      return Object.values(this.quest.collect)
+        .map(collect => `${collect.count} ${this.getCollectText(collect)}`)
+        .join(', ');
     },
     countdownString () {
       const diffDuration = moment.duration(moment(seasonalShopConfig.dateRange.end).diff(moment()));
